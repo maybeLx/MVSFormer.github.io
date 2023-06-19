@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="mvsformer">
+  <meta name="keywords" content="mvs">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nerfies: Deformable Neural Radiance Fields</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+</nav>
+
+<section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-3 publication-title">MVSFormer: Multi-View Stereo by Learning Robust Image Features and Temperature-based Depth</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=1INK-I0AAAAJ&hl=zh-CN&oi=ao">Chenjie Cao</a>,</span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?hl=zh-CN&user=NtHPuC0AAAAJ">Xinlin Ren</a>,</span>
+                            <span class="author-block">
+                                <a href=http://yanweifu.github.io/index.html> Yanwei Fu </a>,
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Fudan University </span>
+
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2208.02541">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark" href="https://openreview.net/forum?id=2VWR6JfwNo">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>OpenReview</span>
+                                    </a>
+                                </span>
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="./static/paper/mvsformer_multi_view_stereo.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <!-- Video Link. -->
+                                <!-- <span class="link-block">
+                                    <a href="TODO"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true"
+                                                focusable="false" data-prefix="fab" data-icon="youtube" role="img"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                                data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                    d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span> -->
+
+
+                                <!-- Github Link. -->
+                                <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/ewrfcas/MVSFormer">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <!-- Dataset Link. -->
+                                <!-- <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i>
+                                        </span>
+                                        <span>Dataset (coming soon)</span>
+                                    </a>
+                                </span> -->
+                                <!-- Dataset Link. -->
+                                <span class="link-block"></span>
+                            </div>
+                            <br>
+                            <div class="is-size-5 publication-authors">
+                                <h3>TMLR 2023 </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+          <img src="./static/teaser/teaser.jpg" height="150%">
+        <div class="content has-text-justified">
+          <p>
+            Feature representation learning is the key recipe for learning-based Multi-View Stereo (MVS).
+                        As the common feature extractor of learning-based MVS, vanilla Feature Pyramid Networks (FPNs)
+                        suffer from discouraged feature representations for reflection and texture-less areas, which
+                        limits the generalization of MVS. Even FPNs worked with pre-trained Convolutional Neural Networks (CNNs)
+                        fail to tackle these issues. On the other hand, Vision Transformers (ViTs) have achieved prominent
+                        success in many 2D vision tasks. Thus we ask whether ViTs can facilitate feature learning in MVS?
+                        In this paper, we propose a pre-trained ViT enhanced MVS network called MVSFormer,
+                        which can learn more reliable feature representations benefited by informative priors from ViT.
+                        The finetuned MVSFormer with hierarchical ViTs of efficient attention mechanisms can achieve
+                        prominent improvement based on FPNs. Besides, the alternative MVSFormer with frozen ViT weights is
+                        further proposed. This largely alleviates the training cost with competitive performance strengthened
+                        by the attention map from the self-distillation pre-training. MVSFormer can be generalized to various
+                        input resolutions with efficient multi-scale training strengthened by gradient accumulation.
+                        Moreover, we discuss the merits and drawbacks of classification and regression-based MVS methods,
+                        and further propose to unify them with a temperature-based strategy. MVSFormer achieves state-of-the-art
+                        performance on the DTU dataset. Particularly, MVSFormer ranks as Top-1 on both intermediate and advanced
+                        sets of the highly competitive Tanks-and-Temples leaderboard.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!--/ Abstract. -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method Overview</h2>
+          <img src="./static/teaser/pipline.jpg">
+        <div class="content has-text-justified">
+          <p> The overview of MVSFormer. (A) Feature extractors of hierarchical ViT (a) and plain ViT (b).
+                            Inputs for ViTs are downsampled to the 1/2 resolution. (B) Multi-scale cost volume formulation
+                            and regularization. "Warping": warping source features with upsampled depth hypotheses for cost
+                            volumes. "Volume Fusion": fusing cost volumes from all source views with respective visibility.
+                        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+            <div class="content is-centered has-text-centered">
+                <h2 class="title is-4">Results on DTU</h2>
+            </div>
+      </div>
+
+     <div class="container">
+          <div id="results-carousel" class="carousel results-carousel" slidesToShow=3>
+               <video poster="" id="scan1" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/dtu/scan1.mp4"
+                  type="video/mp4">
+              </video>
+
+               <video poster="" id="scan4" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/dtu/scan4.mp4"
+                  type="video/mp4">
+              </video>
+
+               <video poster="" id="scan9" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/dtu/scan9.mp4"
+                  type="video/mp4">
+              </video>
+
+               <video poster="" id="scan11" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/dtu/scan11.mp4"
+                  type="video/mp4">
+              </video>
+              <video poster="" id="scan12" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/dtu/scan12.mp4"
+                  type="video/mp4">
+              </video>
+
+              <video poster="" id="scan15" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/dtu/scan15.mp4"
+                  type="video/mp4">
+              </video>
+          </div>
+     </div>
+    <div class="container">
+        <div id="results-carousel1" class="carousel results-carousel" slidesToShow=3>
+             <video poster="" id="scan23" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan23.mp4"
+                type="video/mp4">
+            </video>
+             <video poster="" id="scan24" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan24.mp4"
+                type="video/mp4">
+            </video>
+
+             <video poster="" id="scan29" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan29.mp4"
+                type="video/mp4">
+            </video>
+
+             <video poster="" id="scan32" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan32.mp4"
+                type="video/mp4">
+            </video>
+            <video poster="" id="scan33" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan33.mp4"
+                type="video/mp4">
+            </video>
+
+            <video poster="" id="scan34" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan34.mp4"
+                type="video/mp4">
+            </video>
+        </div>
+     </div>
+    <div class="container">
+        <div id="results-carousel2" class="carousel results-carousel" slidesToShow=3>
+             <video poster="" id="scan48" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan48.mp4"
+                type="video/mp4">
+            </video>
+             <video poster="" id="scan49" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan49.mp4"
+                type="video/mp4">
+            </video>
+
+             <video poster="" id="scan62" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan62.mp4"
+                type="video/mp4">
+            </video>
+
+             <video poster="" id="scan75" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan75.mp4"
+                type="video/mp4">
+            </video>
+            <video poster="" id="scan77" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan77.mp4"
+                type="video/mp4">
+            </video>
+
+            <video poster="" id="scan110" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan110.mp4"
+                type="video/mp4">
+            </video>
+          <video poster="" id="scan114" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan114.mp4"
+                type="video/mp4">
+            </video>
+          <video poster="" id="scan118" autoplay controls muted loop playsinline height="100%">
+             <source src="./results/dtu/scan118.mp4"
+                type="video/mp4">
+            </video>
+
+        </div>
+     </div>
+<!--    </div>-->
+
+  </div>
+
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+            <div class="content is-centered has-text-centered">
+                <h2 class="title is-4">Results on Tanksandtemples</h2>
+            </div>
+      </div>
+     <div class="container">
+          <div id="results-carousel3" class="carousel results-carousel" slidesToShow=3>
+               <video poster="" id="Family" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/tnt/Family.mp4"
+                  type="video/mp4">
+               </video>
+               <video poster="" id="Francis" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/tnt/Francis.mp4"
+                  type="video/mp4">
+               </video>
+               <video poster="" id="Horse" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/tnt/Horse.mp4"
+                  type="video/mp4">
+               </video>
+               <video poster="" id="LightHouse" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/tnt/LightHouse.mp4"
+                  type="video/mp4">
+               </video>
+              <video poster="" id="Panther" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/tnt/Panther.mp4"
+                  type="video/mp4">
+               </video>
+              <video poster="" id="Train" autoplay controls muted loop playsinline height="100%">
+               <source src="./results/tnt/Train.mp4"
+                  type="video/mp4">
+               </video>
+          </div>
+     </div>
+
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+            <h2 class="title is-4"> Acknowledgments</h2>
+            <p> This work was supported by NSFC under Grant (No.62076067).</p>
+            </div>
+      </div>
+
+
+
+
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-4">BibTeX</h2>
+    <pre><code>@article{caomvsformer,
+  title={MVSFormer: Multi-View Stereo by Learning Robust Image Features and Temperature-based Depth},
+  author={Cao, Chenjie and Ren, Xinlin and Fu, Yanwei},
+  journal={Transactions of Machine Learning Research},
+  year={2023}}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
