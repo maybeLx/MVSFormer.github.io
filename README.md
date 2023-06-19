@@ -1,6 +1,6 @@
 # Nerfies
 
-This is the repository that contains source code for the [MVSFormer website]([https://nerfies.github.io](https://maybelx.github.io/MVSFormer.github.io/)).
+This is the repository that contains source code for the [MVSFormer website](https://maybelx.github.io/MVSFormer.github.io/).
 
 If you find Nerfies useful for your work please cite:
 ```
